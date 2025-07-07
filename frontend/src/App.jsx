@@ -11,6 +11,7 @@ import api from './api'
 api.get('/info')
   .then(response => console.log(response.data))
   .catch(error => console.error('Erro na API:', error))
+console.log('🔍 API URL:', import.meta.env.VITE_API_URL)
 
 function App() {
   const [file, setFile] = useState(null)
