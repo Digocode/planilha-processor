@@ -12,13 +12,6 @@ api.get('/info')
   .then(response => console.log(response.data))
   .catch(error => console.error('Erro na API:', error))
 
-const API_BASE_URL = 'http://localhost:3001'
-const api = axios.create({
-  baseURL: 'https://planilha-processor-production.up.railway.app/'
-})
-api()
-
-
 function App() {
   const [file, setFile] = useState(null)
   const [uploading, setUploading] = useState(false)
