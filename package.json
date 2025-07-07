@@ -1,0 +1,17 @@
+{
+  "name": "planilha-processor",
+  "version": "1.0.0",
+  "description": "Um sistema completo para upload e processamento de planilhas Excel (.xlsx) com geração de relatórios em PDF. Desenvolvido com Node.js, Express e React.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.0",
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "vite": "^7.0.2"
+  }
+}
