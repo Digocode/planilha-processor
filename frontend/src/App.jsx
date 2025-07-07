@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge.jsx'
 import { Progress } from '@/components/ui/progress.jsx'
 import { Upload, FileSpreadsheet, Download, CheckCircle, AlertCircle, Info } from 'lucide-react'
 import './App.css'
-import api from '../../frontend/api'
+import api from './api'
 
 api.get('/info')
   .then(response => console.log(response.data))
