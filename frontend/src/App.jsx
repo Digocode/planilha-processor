@@ -8,6 +8,8 @@ import { Upload, FileSpreadsheet, Download, CheckCircle, AlertCircle, Info } fro
 import './App.css'
 import api from './api'
 
+console.log('🔍 API URL:', import.meta.env.VITE_API_URL)
+
 api.get('/info')
   .then(response => console.log(response.data))
   .catch(error => console.error('Erro na API:', error))
@@ -43,12 +45,13 @@ function App() {
     formData.append('file', file)
 
     try {
-      const response = await fetch(`${API_BASE_URL}/upload`, {
-        method: 'POST',
-        body: formData,
+      const response = await api.post('/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       })
 
-      const data = await response.json()
+      const data = response.data
 
       if (data.success) {
         setMessage({ type: 'success', text: data.message })
@@ -68,17 +71,13 @@ function App() {
     setMessage(null)
 
     try {
-      const response = await fetch(`${API_BASE_URL}/extrair`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          colunasDesejadas: [
-            'PARTICIPANTE', 'SEXO', '1', '1 CONTATO', '2', '2 CONTATO',
-            '3', '3 CONTATO', 'Pedido de Carta', 'Central de Cartas'
-          ]
-        }),
+      const response = await api.post('/extrair', {
+        colunasDesejadas: [
+          'PARTICIPANTE', 'SEXO', '1', '1 CONTATO', '2', '2 CONTATO',
+          '3', '3 CONTATO', 'Pedido de Carta', 'Central de Cartas'
+        ]
+      }, {
+        responseType: 'blob'
       })
 
       if (response.ok) {

@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': '/src', // ✅ Isso funciona direto no Vercel
+      '@': '/src',
     },
   },
 })
